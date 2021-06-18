@@ -36,7 +36,7 @@ export class CloudfrontDemoStack extends cdk.Stack {
 
     // Trigger frontend deployment
     new BucketDeployment(this, "websiteDeployment", {
-      sources: [Source.asset("../cdk-youtube-demo/frontend/build/")],
+      sources: [Source.asset("../cdk-demo/frontend/build")],
       destinationBucket: websiteBucket as any
     });
 
@@ -48,7 +48,7 @@ export class CloudfrontDemoStack extends cdk.Stack {
     // Creating CloudFront distribution
     let cloudFrontDist = new Distribution(this, "cloudfrontDist", {
       defaultRootObject: "index.html",
-      domainNames: ["enlearacademy.tk"],
+      domainNames: ["jwsea.net"],
       certificate: certificateArn,
       defaultBehavior: {
         origin: new origins.S3Origin(websiteBucket as any, {
